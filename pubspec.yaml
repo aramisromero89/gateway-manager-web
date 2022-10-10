@@ -41,6 +41,7 @@ dependencies:
   intl: ^0.17.0
   fluttertoast: ^8.0.9
   regexed_validator: ^2.0.0+1
+  flutter_native_splash: ^2.2.9
 
 dev_dependencies:
   flutter_test:
@@ -100,3 +101,14 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  
+flutter_native_splash:  
+  color: "#e1f5fe"
+  image: assets/logo_lockup_flutter_vertical.png
+  color_dark: "#042a49"
+  image_dark: assets/logo_lockup_flutter_vertical_wht.png
+  android_12:
+    image: assets/android12splash.png
+    color: "#42a5f5"
+    icon_background_color: "#eeeeee"  
+  fullscreen: true

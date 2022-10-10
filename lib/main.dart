@@ -1,10 +1,13 @@
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gateway_manager_client/router/router.gr.dart';
 
 final _appRouter = AppRouter();
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.remove();
   runApp(
     const ProviderScope(
       child: MyApp(),
