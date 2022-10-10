@@ -3,22 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gateway_manager_client/api/api_provider.dart';
 import 'package:gateway_manager_client/api/params/common/id_string.dart';
+import 'package:gateway_manager_client/components/custom_scaffold.dart';
 import 'package:gateway_manager_client/logic/gateway_list_provider.dart';
-import 'package:gateway_manager_client/pages/gateway_edit_form.dart';
+import 'package:gateway_manager_client/components/gateway_edit_form.dart';
 import 'package:gateway_manager_client/router/router.gr.dart';
 
 class GatewayListPage extends ConsumerWidget {
   const GatewayListPage({Key? key}) : super(key: key);
-
-  Widget _buildCell(String text) {
-    return Padding(
-      padding: const EdgeInsets.all(5),
-      child: Text(
-        text,
-        textAlign: TextAlign.center,
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -26,8 +17,9 @@ class GatewayListPage extends ConsumerWidget {
     final currentPage = ref.watch(currentPageProvider);
     final pageSize = ref.watch(pageSizeProvider);
     final items = ref.watch(itemsProvider);
-    return Scaffold(
-      body: SingleChildScrollView(
+    return CustomScaffold(
+      text: "Gateway list",
+      child: SingleChildScrollView(
         child: Column(
           children: [
             if (items.isLoading) const LinearProgressIndicator(),
