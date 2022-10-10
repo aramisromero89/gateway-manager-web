@@ -13,6 +13,12 @@ import 'package:retrofit/retrofit.dart';
 import 'entities/device.dart';
 part "api_client.g.dart";
 
+class ApiResponse<T> {
+  T? data;
+  dynamic error;
+  ApiResponse({this.data, this.error});
+}
+
 @RestApi()
 abstract class ApiClient {
   factory ApiClient(Dio dio, {String baseUrl}) = _ApiClient;
@@ -26,6 +32,9 @@ abstract class ApiClient {
   @POST("/device/edit")
   Future<Device> deviceEdit(@Body() DeviceEdit args);
 
+  @POST("/device/detail")
+  Future<Device> deviceDetail(@Body() IdInt args);
+
   @POST("/device/remove")
   Future<Device> deviceRemove(@Body() IdInt id);
 
@@ -37,6 +46,9 @@ abstract class ApiClient {
 
   @POST("/gateway/edit")
   Future<Gateway> gatewayEdit(@Body() GatewayEdit args);
+
+  @POST("/gateway/detail")
+  Future<Gateway> gatewayDetail(@Body() IdString id);
 
   @POST("/gateway/remove")
   Future<Gateway> gatewayRemove(@Body() IdString id);

@@ -93,6 +93,30 @@ class _ApiClient implements ApiClient {
   }
 
   @override
+  Future<Device> deviceDetail(args) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(args.toJson());
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Device>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/device/detail',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = Device.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<Device> deviceRemove(id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -180,6 +204,30 @@ class _ApiClient implements ApiClient {
             .compose(
               _dio.options,
               '/gateway/edit',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    final value = Gateway.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<Gateway> gatewayDetail(id) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(id.toJson());
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Gateway>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/gateway/detail',
               queryParameters: queryParameters,
               data: _data,
             )
