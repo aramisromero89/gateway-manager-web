@@ -10,14 +10,12 @@ Gateway _$GatewayFromJson(Map<String, dynamic> json) => Gateway(
       serialNumber: json['serialNumber'] as String,
       name: json['name'] as String,
       address: json['address'] as String,
-      devices: (json['devices'] as List<dynamic>?)
-          ?.map((e) => Device.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      devicesCount: json['devicesCount'] as int?,
     );
 
 Map<String, dynamic> _$GatewayToJson(Gateway instance) => <String, dynamic>{
       'serialNumber': instance.serialNumber,
       'name': instance.name,
       'address': instance.address,
-      'devices': instance.devices,
+      'devicesCount': instance.devicesCount,
     };

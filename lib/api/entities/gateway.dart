@@ -7,13 +7,13 @@ class Gateway {
   String serialNumber;
   String name;
   String address;
-  List<Device>? devices;
+  int? devicesCount;
 
   Gateway({
     required this.serialNumber,
     required this.name,
     required this.address,
-    required this.devices,
+    required this.devicesCount,
   });
 
   factory Gateway.fromJson(Map<String, dynamic> json) =>
