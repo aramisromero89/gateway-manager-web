@@ -21,7 +21,6 @@ class RequestHelper {
       final res = await operation;
       return ApiResponse(data: res);
     } catch (e) {
-      Fluttertoast.cancel();
       Fluttertoast.showToast(
         msg: "Something wrong happened",
         timeInSecForIosWeb: 4,
