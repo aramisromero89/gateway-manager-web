@@ -1,16 +1,17 @@
-# gateway_manager_client
+# Gateway manager client
 
-A new Flutter project.
+## Description
 
-## Getting Started
+ Gateway manager Client written with [Flutter](https://flutter.dev). Deployed [here](https://aramisromero89.github.io/gateway-manager-web/).
 
-This project is a starting point for a Flutter application.
+## Run app
 
-A few resources to get you started if this is your first Flutter project:
+Setup your Flutter environment and then:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+```bash
+$ blutter build web --dart-define=apiBaseUrl={url}
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Then you can host the resulting website with any web server.
+
+Any commits to master branch will update the site on github pages.
