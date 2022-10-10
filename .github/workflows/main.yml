@@ -8,6 +8,7 @@ jobs:
     name: Build Web
     env:
       my_secret: ${{secrets.commit_secret}}
+      api_url: ${{secrets.API_URL}}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -17,7 +18,7 @@ jobs:
           channel: 'stable'
       - run: flutter config --enable-web
       - run: flutter pub get
-      - run: flutter build web --release --base-href="/gateway-manager-web/"
+      - run: flutter build web --release --base-href="/gateway-manager-web/" --dart-define=baseApiUrl=${{secrets.API_URL}}
       - run: |
           cd build/web
           git init
