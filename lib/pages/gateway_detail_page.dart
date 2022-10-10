@@ -3,10 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gateway_manager_client/api/api_provider.dart';
 import 'package:gateway_manager_client/api/entities/gateway.dart';
-import 'package:gateway_manager_client/pages/device_list_component.dart';
-import 'package:gateway_manager_client/pages/gateway_edit_form.dart';
+import 'package:gateway_manager_client/components/custom_scaffold.dart';
+import 'package:gateway_manager_client/components/device_list_component.dart';
+import 'package:gateway_manager_client/components/gateway_edit_form.dart';
+import 'package:gateway_manager_client/router/router.gr.dart';
 
 import '../api/params/common/id_string.dart';
+import '../components/gateway_edit_form.dart';
 
 class GatewayDetailPage extends ConsumerStatefulWidget {
   final String id;
@@ -36,8 +39,9 @@ class _GatewayDetailPageState extends ConsumerState<GatewayDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
+    return CustomScaffold(
+      text: "Gateway detail",
+      child: SingleChildScrollView(
         child: FutureBuilder<Gateway?>(
           future: _future,
           builder: (context, snapshot) {
@@ -47,23 +51,36 @@ class _GatewayDetailPageState extends ConsumerState<GatewayDetailPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    ElevatedButton(
-                        onPressed: () async {
-                          final res = await showModalBottomSheet<bool?>(
-                            context: context,
-                            constraints: const BoxConstraints(
-                                maxHeight: 250, maxWidth: 300),
-                            builder: (context) => Center(
-                              child: GatewayEditForm(id: widget.id),
-                            ),
-                          );
-                          if (res == true) {
-                            setState(() {
-                              _future = _buildFuture();
-                            });
-                          }
-                        },
-                        child: const Text("Update gateway data")),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () async {
+                              final res = await showModalBottomSheet<bool?>(
+                                context: context,
+                                constraints: const BoxConstraints(
+                                    maxHeight: 250, maxWidth: 300),
+                                builder: (context) => Center(
+                                  child: GatewayEditForm(id: widget.id),
+                                ),
+                              );
+                              if (res == true) {
+                                setState(() {
+                                  _future = _buildFuture();
+                                });
+                              }
+                            },
+                            child: const Text("Update gateway data")),
+                        TextButton(
+                          onPressed: () {
+                            context.router
+                                .replaceAll([const GatewayListRoute()]);
+                          },
+                          child: const Text("Back to gateway list"),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
