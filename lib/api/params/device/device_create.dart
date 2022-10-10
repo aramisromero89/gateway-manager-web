@@ -6,13 +6,11 @@ part "device_create.g.dart";
 @JsonSerializable()
 class DeviceCreate {
   String vendor;
-  DateTime date;
   DeviceStatus status;
   String gatewaySerialNumber;
 
   DeviceCreate({
     required this.vendor,
-    required this.date,
     required this.status,
     required this.gatewaySerialNumber,
   });

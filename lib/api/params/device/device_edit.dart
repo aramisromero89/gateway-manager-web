@@ -11,11 +11,9 @@ class DeviceEdit extends DeviceCreate {
   DeviceEdit({
     required this.id,
     required String vendor,
-    required DateTime date,
     required DeviceStatus status,
     required String gatewaySerialNumber,
   }) : super(
-            date: date,
             gatewaySerialNumber: gatewaySerialNumber,
             status: status,
             vendor: vendor);
