@@ -105,9 +105,7 @@ class _GatewayDetailComponentState
               ),
             );
           }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return Container();
         },
       ),
     );
