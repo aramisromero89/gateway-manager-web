@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:gateway_manager_client/api/entities/gateway.dart';
 import 'package:gateway_manager_client/api/entities/gateway_list_data.dart';
+import 'package:gateway_manager_client/api/entities/user.dart';
+import 'package:gateway_manager_client/api/params/auth/login.dart';
+import 'package:gateway_manager_client/api/params/auth/token.dart';
 import 'package:gateway_manager_client/api/params/common/id_int.dart';
 import 'package:gateway_manager_client/api/params/common/id_string.dart';
 import 'package:gateway_manager_client/api/params/device/device_create.dart';
@@ -22,6 +25,15 @@ class ApiResponse<T> {
 @RestApi()
 abstract class ApiClient {
   factory ApiClient(Dio dio, {String baseUrl}) = _ApiClient;
+
+  @POST("/auth/detail")
+  Future<User> authDetail();
+
+  @POST("/auth/login")
+  Future<Token> authLogin(@Body() Login args);
+
+  @POST("/auth/register")
+  Future<Token> authRegister(@Body() Login args);
 
   @POST("/device/list")
   Future<List<Device>> devicesByGateway(@Body() IdString gatewayId);

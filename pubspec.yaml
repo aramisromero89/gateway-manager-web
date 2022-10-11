@@ -42,6 +42,8 @@ dependencies:
   fluttertoast: ^8.0.9
   regexed_validator: ^2.0.0+1
   flutter_native_splash: ^2.2.9
+  shared_preferences: ^2.0.15
+  flutter_easyloading: ^3.0.5
 
 dev_dependencies:
   flutter_test:

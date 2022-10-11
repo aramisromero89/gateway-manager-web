@@ -13,6 +13,8 @@ import 'package:gateway_manager_client/api/params/gateway/gateway_create.dart';
 import 'package:gateway_manager_client/api/params/gateway/gateway_edit.dart';
 import 'package:regexed_validator/regexed_validator.dart';
 
+import '../util/custom_validators.dart';
+
 class GatewayEditForm extends ConsumerStatefulWidget {
   final String? id;
   const GatewayEditForm({
@@ -72,12 +74,7 @@ class _GatewayEditFormState extends ConsumerState<GatewayEditForm> {
                   TextFormField(
                     controller: _nameController,
                     decoration: const InputDecoration(label: Text("Name")),
-                    validator: (text) {
-                      if (text == null || text.isEmpty) {
-                        return "Can't be empty";
-                      }
-                      return null;
-                    },
+                    validator: emptyValidator,
                   ),
                   TextFormField(
                     controller: _addressController,
