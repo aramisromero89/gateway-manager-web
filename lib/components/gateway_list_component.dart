@@ -20,7 +20,6 @@ class GatewayListComponent extends ConsumerWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          if (items.isLoading) const LinearProgressIndicator(),
           ElevatedButton(
             onPressed: (() async {
               final res = await showModalBottomSheet<bool?>(

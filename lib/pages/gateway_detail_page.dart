@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gateway_manager_client/components/custom_scaffold.dart';
-import 'package:gateway_manager_client/logic/gateway_detail_component.dart';
+import 'package:gateway_manager_client/components/gateway_detail_component.dart';
 
 class GatewayDetailPage extends ConsumerWidget {
   final String id;
