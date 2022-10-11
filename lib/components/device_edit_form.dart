@@ -8,6 +8,8 @@ import 'package:gateway_manager_client/api/params/common/id_int.dart';
 import 'package:gateway_manager_client/api/params/device/device_create.dart';
 import 'package:gateway_manager_client/api/params/device/device_edit.dart';
 
+import '../util/custom_validators.dart';
+
 class DeviceEditForm extends ConsumerStatefulWidget {
   final int? id;
   final String? gatewayId;
@@ -68,12 +70,7 @@ class _DeviceEditFormState extends ConsumerState<DeviceEditForm> {
                   TextFormField(
                     controller: _controller,
                     decoration: const InputDecoration(label: Text("Vendor")),
-                    validator: (text) {
-                      if (text == null || text.isEmpty) {
-                        return "Can't be empty";
-                      }
-                      return null;
-                    },
+                    validator: emptyValidator,
                   ),
                   Row(
                     children: [
