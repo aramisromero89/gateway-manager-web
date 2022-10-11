@@ -105,6 +105,9 @@ class _DeviceListComponentState extends ConsumerState<DeviceListComponent> {
                   .toList();
             }
 
+            if (rows.isEmpty) {
+              return Container();
+            }
             return DataTable(columns: const [
               DataColumn(label: Text("Vendor")),
               DataColumn(label: Text("Status")),
